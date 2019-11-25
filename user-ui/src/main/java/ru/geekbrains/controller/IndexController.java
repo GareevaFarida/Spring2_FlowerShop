@@ -1,13 +1,24 @@
-package ru.geekbrains.spring2.controller;
+package ru.geekbrains.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import ru.geekbrains.service.CategoryService;
 
 @Controller
 public class IndexController {
 
-    @GetMapping(value = "/index")
-    public String mainPage(){
+    private CategoryService categoryService;
+
+    @Autowired
+    public IndexController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
+
+    @GetMapping(value = "index")
+    public String mainPage(Model model){
+        model.addAttribute("categories",categoryService.getAllCategory());
         return "index";
     }
 

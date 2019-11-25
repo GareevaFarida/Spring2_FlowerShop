@@ -17,9 +17,9 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
+        <module>data</module>
         <module>admin-ui</module>
         <module>user-ui</module>
-        <module>data</module>
     </modules>
 
 </project>

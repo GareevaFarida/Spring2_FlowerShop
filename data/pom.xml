@@ -1,79 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
         <groupId>spring2.ru.geekbrains</groupId>
         <artifactId>my-shop</artifactId>
         <version>1.0-SNAPSHOT</version>
-	</parent>
-	<groupId>spring2.ru.geekbrains.data</groupId>
-	<artifactId>data</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>data</name>
-	<description>data</description>
+    </parent>
+    <groupId>spring2.ru.geekbrains.data</groupId>
+    <artifactId>data</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>data</name>
+    <description>data</description>
 
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
+    <properties>
+        <java.version>1.8</java.version>
+        <timestamp>${maven.build.timestamp}</timestamp>
+        <maven.build.timestamp.format>yyyyMMdd-HHmmssSSS</maven.build.timestamp.format>
+    </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jdbc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-rest</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
 
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.5.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>*.properties</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+                <excludes>
+                    <exclude>*.properties</exclude>
+                </excludes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <propertyFile>${project.build.outputDirectory}/liquibase-maven-plugin.properties</propertyFile>
+                    <systemProperties>
+                        <user.name>farida</user.name>
+                    </systemProperties>
+                    <verbose>true</verbose>
+                    <logging>debug</logging>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.liquibase.ext</groupId>
+                        <artifactId>liquibase-hibernate5</artifactId>
+                        <version>3.6</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-data-jpa</artifactId>
+                        <version>2.2.0.RELEASE</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

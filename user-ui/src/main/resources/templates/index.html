@@ -122,18 +122,19 @@
             <div class="right_box">
                 <div class="title"><span class="title_icon"><img src="../static/images/bullet5.gif" th:src="@{/images/bullet5.gif}" alt=""/></span>Categories
                 </div>
-                <ul class="list">
-                  <li><a th:href="@{/category}">accesories</a></li>
-                  <li><a th:href="@{/category}">flower gifts</a></li>
-                  <li><a th:href="@{/category}">specials</a></li>
-                  <li><a th:href="@{/category}">hollidays gifts</a></li>
-                  <li><a th:href="@{/category}">accesories</a></li>
-                  <li><a th:href="@{/category}">flower gifts</a></li>
-                  <li><a th:href="@{/category}">specials</a></li>
-                  <li><a th:href="@{/category}">hollidays gifts</a></li>
-                  <li><a th:href="@{/category}">accesories</a></li>
-                  <li><a th:href="@{/category}">flower gifts</a></li>
-                  <li><a th:href="@{/category}">specials</a></li>
+                <ul class="list" th:each="category : ${categories}">
+                    <li th:text="${category.getName()}">??? ?????????</li>
+<!--                  <li><a th:href="@{/category}">accesories</a></li>-->
+<!--                  <li><a th:href="@{/category}">flower gifts</a></li>-->
+<!--                  <li><a th:href="@{/category}">specials</a></li>-->
+<!--                  <li><a th:href="@{/category}">hollidays gifts</a></li>-->
+<!--                  <li><a th:href="@{/category}">accesories</a></li>-->
+<!--                  <li><a th:href="@{/category}">flower gifts</a></li>-->
+<!--                  <li><a th:href="@{/category}">specials</a></li>-->
+<!--                  <li><a th:href="@{/category}">hollidays gifts</a></li>-->
+<!--                  <li><a th:href="@{/category}">accesories</a></li>-->
+<!--                  <li><a th:href="@{/category}">flower gifts</a></li>-->
+<!--                  <li><a th:href="@{/category}">specials</a></li>-->
                 </ul>
                 <div class="title"><span class="title_icon"><img src="../static/images/bullet6.gif" th:src="@{/images/bullet6.gif}" alt=""/></span>Partners</div>
                 <ul class="list">
