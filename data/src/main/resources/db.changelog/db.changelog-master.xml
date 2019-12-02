@@ -14,22 +14,34 @@
         <tagDatabase tag="db_init"/>
     </changeSet>
 
-<!--    <include file="v-1.0/db.changelog-v.1.0.xml" relativeToChangelogFile="true"/>-->
+    <include file="v-1.0/db.changelog-v.1.0.xml" relativeToChangelogFile="true"/>
 
-<!--    <changeSet author="farida" id="1">-->
-<!--        <tagDatabase tag="v.1.0"/>-->
-<!--    </changeSet>-->
+    <changeSet author="farida" id="1">
+        <tagDatabase tag="v.1.0"/>
+    </changeSet>
 
-<!--    <include file="v-2.0/db.changelog-v.2.0.xml" relativeToChangelogFile="true"/>-->
+    <include file="v-2.0/db.changelog-v.2.0.xml" relativeToChangelogFile="true"/>
 
-<!--    <changeSet author="farida" id="2">-->
-<!--        <tagDatabase tag="v.2.0"/>-->
-<!--    </changeSet>-->
+    <changeSet author="farida" id="2">
+        <tagDatabase tag="v.2.0"/>
+    </changeSet>
 
     <include file="v-3.0/db.changelog-v.3.0.xml" relativeToChangelogFile="true"/>
 
     <changeSet author="farida" id="3">
         <tagDatabase tag="v.3.0"/>
+    </changeSet>
+
+    <include file="v-4.0/db.changelog-v.4.0.xml" relativeToChangelogFile="true"/>
+
+    <changeSet author="farida" id="4">
+        <tagDatabase tag="v.4.0"/>
+    </changeSet>
+
+    <include file="v-4.0/db.changelog-v.4.1.xml" relativeToChangelogFile="true"/>
+
+    <changeSet author="farida" id="5">
+        <tagDatabase tag="v.4.1"/>
     </changeSet>
 
 </databaseChangeLog>

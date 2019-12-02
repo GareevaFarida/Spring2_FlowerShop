@@ -26,11 +26,17 @@ public class Product implements Serializable {
     @ManyToOne(optional = false)
     private Brand brand;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade= CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "products_pictures",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "picture_id"))
     private List<Picture> pictures;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "products_flowers",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "flower_id"))
+    private List<Flower> flowers;
 
     public Product() {
 
@@ -82,5 +88,13 @@ public class Product implements Serializable {
 
     public void setPictures(List<Picture> pictures) {
         this.pictures = pictures;
+    }
+
+    public List<Flower> getFlowers() {
+        return flowers;
+    }
+
+    public void setFlowers(List<Flower> flowers) {
+        this.flowers = flowers;
     }
 }

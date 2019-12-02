@@ -36,7 +36,7 @@ public class User implements Serializable {
     private Set<Role> roles;
 
     public User() {
-        this.roles = new HashSet<>();
+
     }
 
     public User(String username, String password, String firstName, String lastName, String email) {
@@ -108,6 +108,7 @@ public class User implements Serializable {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
 
     @Override
     public String toString() {
