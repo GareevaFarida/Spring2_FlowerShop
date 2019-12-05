@@ -9,4 +9,8 @@ public interface CategoryService {
 
     List<Category> getAllCategory();
     void insertListCategoriesInModel(Model model);
+
+    Category findCategoryById(Long id);
+
+    String findCategoryNameById(Long id);
 }

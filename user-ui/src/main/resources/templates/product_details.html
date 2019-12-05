@@ -17,16 +17,26 @@
     <div th:replace="fragments/header :: header-area"></div>
 
     <div class="center_content">
-        <div class="left_content">
-            <div class="crumb_nav"><a href="#">home</a> &gt;&gt; product name</div>
-            <div class="title"><span class="title_icon"><img src="../static/images/bullet1.gif" alt=""/></span>Product
-                name
+        <div class="left_content" th:object="${product}">
+            <div class="crumb_nav"><a th:href="@{/index}">home</a>
+                &gt;&gt;
+                <a th:href="@{/categories/select?id={id}(id=${product.categoryId})}" th:text="*{categoryName}"> category name</a>
+                &gt;&gt;
+                <span th:text="*{name}">Product name</span>
+            </div>
+            <div class="title" th:text="*{name}">
+                <!--                <span class="title_icon"><img src="/images/thumb3.gif" alt=""/></span>-->
+                Product name
             </div>
             <div class="feat_prod_box_details">
-                <div class="prod_img"><a href="#"><img src="../static/images/prod1.gif" alt="" border="0"/></a> <br/>
-                    <br/>
-                    <a href="../static/images/big_pic.jpg" rel="lightbox"><img src="../static/images/zoom.gif" alt=""
-                                                                               border="0"/></a></div>
+                <div class="prod_img">
+                    <!--                    <a href="#"><img src="/images/thumb3.gif" alt="" border="0"/></a>-->
+                    <!--                    <br/>-->
+                    <!--                    <br/>-->
+                    <a href="/images/basket-red-roses.webp" rel="lightbox"><img
+                            th:src="@{/picture/{id}(id=${product.pictureIds[0]})}" alt="" border="0"/></a>
+
+                </div>
                 <div class="prod_det_box">
                     <div class="box_top"></div>
                     <div class="box_center">
@@ -36,14 +46,17 @@
                             exercitation.<br/>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
                             ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. </p>
-                        <div class="price"><strong>PRICE:</strong> <span class="red">100 $</span></div>
-                        <div class="price"><strong>COLORS:</strong> <span class="colors"><img
-                                src="../static/images/color1.gif"
-                                alt="" border="0"/></span>
-                            <span class="colors"><img src="../static/images/color2.gif" alt="" border="0"/></span> <span
-                                    class="colors"><img src="../static/images/color3.gif" alt="" border="0"/></span>
+                        <div class="price"><strong>PRICE:</strong> <span class="red">$</span><span class="red"
+                                                                                                   th:text="*{price}">100 $</span>
                         </div>
-                        <a href="#" class="more"><img src="../static/images/order_now.gif" alt="" border="0"/></a>
+                        <div class="price"><strong>COLORS:</strong> <span class="colors"><img
+                                src="/images/color1.gif"
+                                alt="" border="0"/></span>
+                            <span class="colors"><img src="/images/color2.gif" alt="" border="0"/></span> <span
+                                    class="colors"><img src="/images/color3.gif" alt="" border="0"/></span>
+                        </div>
+                        <a th:href="@{/cart/{id}(id=${product.id})}" class="more"><img src="/images/order_now.gif"
+                                                                                       alt="" border="0"/></a>
                         <div class="clear"></div>
                     </div>
                     <div class="box_bottom"></div>

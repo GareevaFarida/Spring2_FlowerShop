@@ -38,6 +38,12 @@ public class Product implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "flower_id"))
     private List<Flower> flowers;
 
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "products_colors",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "color_id"))
+    private List<Color> colors;
+
     public Product() {
 
     }
@@ -96,5 +102,13 @@ public class Product implements Serializable {
 
     public void setFlowers(List<Flower> flowers) {
         this.flowers = flowers;
+    }
+
+    public List<Color> getColors() {
+        return colors;
+    }
+
+    public void setColors(List<Color> colors) {
+        this.colors = colors;
     }
 }

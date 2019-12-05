@@ -5,36 +5,37 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.geekbrains.persist.repo.CategoryRepository;
 import ru.geekbrains.persist.repo.ProductRepository;
+import ru.geekbrains.service.CategoryService;
+import ru.geekbrains.service.ProductService;
 
 @Controller
 @RequestMapping("categories")
 public class CategoryController {
 
-    private final ProductRepository productRepository;
+    private final ProductService productService;
+    private final CategoryService categoryService;
 
     @Autowired
-    public CategoryController(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public CategoryController(ProductService productService, CategoryService categoryService) {
+        this.productService = productService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping(value = "")
-    public String categoryPage() {
-        return "category";
+    public String categoryPage(Model model) {
+        categoryService.insertListCategoriesInModel(model);
+        return "products";
     }
 
     @GetMapping(value = "/select")
     public String editForm(@RequestParam("id") Long id, Model model) {
-//        Category category = categoryService.findByIdWithProducts(id)
-//                .orElseThrow(() -> new IllegalStateException("Category not found"));
-//        model.addAttribute("category", category);
-//        model.addAttribute("action", "edit");
-
-        model.addAttribute("products",productRepository.findByCategoryId(id));
-
-        return "category";
+        categoryService.insertListCategoriesInModel(model);
+        model.addAttribute("products",productService.getProductsByCategoryId(id));
+        model.addAttribute("categoryName",categoryService.findCategoryNameById(id));
+        return "products";
     }
 
 }

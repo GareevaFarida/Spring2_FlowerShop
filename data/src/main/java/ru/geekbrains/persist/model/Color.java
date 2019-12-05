@@ -5,8 +5,8 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "flowers")
-public class Flower implements Serializable {
+@Table(name = "colors")
+public class Color implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -15,13 +15,10 @@ public class Flower implements Serializable {
     @Column(name = "name", unique = true, nullable = false)
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "products_flowers",
-            joinColumns = @JoinColumn(name = "flower_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
+    @ManyToMany(mappedBy="colors")
     private List<Product> products;
 
-    public Flower() {
+    public Color() {
     }
 
     public Long getId() {

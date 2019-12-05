@@ -1,13 +1,17 @@
 package ru.geekbrains.service;
 
-import ru.geekbrains.persist.model.Product;
+import ru.geekbrains.controller.repr.ProductRepr;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductService {
 
-    List<Product> getAllProducts();
+    List<ProductRepr> getAllProducts();
 
-    List<Product> getProductsByCategoryId(Long id);
+    ProductRepr getProductById(Long id);
 
+    List<ProductRepr> getProductsByCategoryId(Long id);
+
+    Optional<ProductRepr> findById(Long id);
 }

@@ -23,30 +23,15 @@
                         <td>Qty</td>
                         <td>Total</td>
                     </tr>
-                    <tr>
-                        <td><a href="#"><img src="../static/images/cart_thumb.gif" alt="" border="0"
+                    <tr  th:each="lineItem : ${lineItems}">
+                        <td><a th:href="@{/products/select?{id} = id(${lineItem.productRepr.id})}"><img th:src="@{/picture/{id}(id=${lineItem.productRepr.pictureIds[0]})}" alt="" border="0"
                                              class="cart_thumb"/></a></td>
-                        <td>Gift flowers</td>
-                        <td>100$</td>
-                        <td>1</td>
-                        <td>100$</td>
+                        <td th:text="${lineItem.productRepr.name}">Gift flowers</td>
+                        <td>$<span th:text="${lineItem.productRepr.price}">100$</span></td>
+                        <td th:text="${lineItem.qty}">1</td>
+                        <td>$<span th:text="${lineItem.total}">100$</span></td>
                     </tr>
-                    <tr>
-                        <td><a href="#"><img src="../static/images/cart_thumb.gif" alt="" border="0"
-                                             class="cart_thumb"/></a></td>
-                        <td>Gift flowers</td>
-                        <td>100$</td>
-                        <td>1</td>
-                        <td>100$</td>
-                    </tr>
-                    <tr>
-                        <td><a href="#"><img src="../static/images/cart_thumb.gif" alt="" border="0"
-                                             class="cart_thumb"/></a></td>
-                        <td>Gift flowers</td>
-                        <td>100$</td>
-                        <td>1</td>
-                        <td>100$</td>
-                    </tr>
+
                     <tr>
                         <td colspan="4" class="cart_total"><span class="red">TOTAL SHIPPING:</span></td>
                         <td> 250$</td>

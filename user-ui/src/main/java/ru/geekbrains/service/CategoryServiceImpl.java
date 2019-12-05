@@ -27,4 +27,21 @@ public class CategoryServiceImpl implements CategoryService {
     public void insertListCategoriesInModel(Model model) {
         model.addAttribute("categories", getAllCategory());
     }
+
+    @Override
+    public Category findCategoryById(Long id) {
+        return categoryRepository.findById(id).orElseThrow(IllegalStateException::new);
+    }
+
+    @Override
+    public String findCategoryNameById(Long id) {
+        if (id == -1) {
+            return "All Categories";
+        }
+        try {
+            return findCategoryById(id).getName();
+        } catch (IllegalStateException ex) {
+            return "NOT FOUND ID = " + id;
+        }
+    }
 }

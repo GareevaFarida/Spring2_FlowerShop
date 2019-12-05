@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Flower Shop - Category</title>
+    <div th:replace="fragments/header :: head"></div>
+</head>
+<body>
+<div id="wrap">
+    <div th:replace="fragments/header :: header-area"></div>
+    <div class="center_content">
+        <div class="left_content">
+            <div class="crumb_nav"><a th:href="@{/index}">home</a> &gt;&gt; <span th:text="${categoryName}">category name</span>
+            </div>
+            <div class="title"><span class="title_icon"><img src="../static/images/bullet1.gif" alt=""/></span>
+                <span th:text="${categoryName}">Category products</span>
+            </div>
+            <div class="new_products">
+
+
+                <div class="new_prod_box" th:each="product:${products}">
+                    <form th:action="@{/cart}" method="post">
+                        <a th:href="@{/product_details/{id}(id=${product.id})}"
+                           th:text="${product.name}">
+                            <img th:src="@{/picture/{id}(id=${product.pictureIds[0]})}" alt="">product name
+                        </a>
+                        <div class="new_prod_bg"><span class="new_icon"><img src="../static/images/promo_icon.gif"
+                                                                             alt=""/></span>
+                            <a th:href="@{/product_details/{id}(id=${product.id})}">
+                                <!--                           th:style="'background: url('+@{/picture/{id}(id=${product.pictureIds[0]})}+') no-repeat center center fixed;'">-->
+                                <img th:src="@{/picture/{id}(id=${product.pictureIds[0]})}" alt="" class="thumb"
+                                     border="0"/>
+                            </a>
+                        </div>
+                        <div>
+                            <span>$<span th:text="${product.price}">Price</span></span>
+                        </div>
+
+
+                            <input type="hidden" name="qty" value="1"/>
+                            <input type="hidden" name="productId" th:value="${product.id}">
+                            <button class="shopBtn" type="submit" title="add to cart"> Add to cart </button>
+
+                    </form>
+
+                    <!--                    <div class = "prod_price">-->
+                </div>
+
+                <!--                <div class="container-fluid mb-4">-->
+                <!--                    <div class="card-columns" style="column-count: 5">-->
+                <!--                        <div class="card" th:each="product:${products}">-->
+
+                <!--                            <div class="card-header" th:text="${product.name}">Picture</div>-->
+                <!--                            <a th:href="@{/product_details/{id}(id=${product.id})}"-->
+                <!--                               th:text="${product.name}">-->
+                <!--                                <img class="card-img-bottom" th:src="@{/picture/{id}(id=${product.pictureIds[0]})}" alt=""-->
+                <!--                                     width="40%"/></a>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+            </div>
+            <div class="pagination"><span class="disabled"><<</span><span class="current">1</span><a
+                    href="#">2</a><a href="#">3</a>�<a href="#">10</a><a href="#">11</a><a href="#">>></a></div>
+            <div class="clear"></div>
+        </div>
+        <!--end of left content-->
+        <div th:replace="fragments/right-content::right-content"></div>
+        <!--end of right content-->
+        <div class="clear"></div>
+    </div>
+    <!--end of center content-->
+    <div th:replace="fragments/footer::footer"></div>
+</div>
+</body>
+</html>

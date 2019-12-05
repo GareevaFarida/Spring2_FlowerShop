@@ -1,0 +1,45 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="farida (generated)" id="1575217966468-11">
+        <addUniqueConstraint columnNames="name" constraintName="UC_CATEGORIESNAME_COL" tableName="categories"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575217966468-12">
+        <dropUniqueConstraint constraintName="picture_id_UNIQUE" tableName="products_pictures"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575217966468-13">
+        <dropUniqueConstraint constraintName="product_id_UNIQUE" tableName="products_pictures"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575217966468-14">
+        <dropPrimaryKey constraintName="PRIMARY" tableName="products_flowers"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575217966468-1">
+        <dropUniqueConstraint constraintName="UC_BRANDSNAME_COL" tableName="brands"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575217966468-2">
+        <addUniqueConstraint columnNames="name" constraintName="UC_BRANDSNAME_COL" tableName="brands"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575217966468-3">
+        <dropUniqueConstraint constraintName="UC_FLOWERSNAME_COL" tableName="flowers"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575217966468-4">
+        <addUniqueConstraint columnNames="name" constraintName="UC_FLOWERSNAME_COL" tableName="flowers"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575217966468-5">
+        <dropUniqueConstraint constraintName="UC_ROLESNAME_COL" tableName="roles"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575217966468-6">
+        <addUniqueConstraint columnNames="name" constraintName="UC_ROLESNAME_COL" tableName="roles"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575217966468-7">
+        <dropUniqueConstraint constraintName="UC_USERSUSERNAME_COL" tableName="users"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575217966468-8">
+        <addUniqueConstraint columnNames="username" constraintName="UC_USERSUSERNAME_COL" tableName="users"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575217966468-9">
+        <dropUniqueConstraint constraintName="UK_ehsu2tyinopypjox1ijxt3g3c" tableName="pictures"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575217966468-10">
+        <addUniqueConstraint columnNames="picture_data_id" constraintName="UK_ehsu2tyinopypjox1ijxt3g3c" tableName="pictures"/>
+    </changeSet>
+</databaseChangeLog>

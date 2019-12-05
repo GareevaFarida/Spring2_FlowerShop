@@ -1,0 +1,71 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="farida (generated)" id="1575535770295-13">
+        <createTable tableName="colors">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="colorsPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575535770295-14">
+        <createTable tableName="products_colors">
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="color_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575535770295-15">
+        <addUniqueConstraint columnNames="name" constraintName="UC_COLORSNAME_COL" tableName="colors"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575535770295-16">
+        <addForeignKeyConstraint baseColumnNames="color_id" baseTableName="products_colors" constraintName="FK2sj6smh11h53dhsn5py2qavfo" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="colors" validate="true"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575535770295-17">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="products_colors" constraintName="FKdgbs2nmaolo4bcho8kjp16swj" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="products" validate="true"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575535770295-18">
+        <dropPrimaryKey constraintName="PRIMARY" tableName="products_flowers"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575535770295-1">
+        <dropUniqueConstraint constraintName="UC_BRANDSNAME_COL" tableName="brands"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575535770295-2">
+        <addUniqueConstraint columnNames="name" constraintName="UC_BRANDSNAME_COL" tableName="brands"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575535770295-3">
+        <dropUniqueConstraint constraintName="UC_CATEGORIESNAME_COL" tableName="categories"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575535770295-4">
+        <addUniqueConstraint columnNames="name" constraintName="UC_CATEGORIESNAME_COL" tableName="categories"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575535770295-5">
+        <dropUniqueConstraint constraintName="UC_FLOWERSNAME_COL" tableName="flowers"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575535770295-6">
+        <addUniqueConstraint columnNames="name" constraintName="UC_FLOWERSNAME_COL" tableName="flowers"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575535770295-7">
+        <dropUniqueConstraint constraintName="UC_ROLESNAME_COL" tableName="roles"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575535770295-8">
+        <addUniqueConstraint columnNames="name" constraintName="UC_ROLESNAME_COL" tableName="roles"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575535770295-9">
+        <dropUniqueConstraint constraintName="UC_USERSUSERNAME_COL" tableName="users"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575535770295-10">
+        <addUniqueConstraint columnNames="username" constraintName="UC_USERSUSERNAME_COL" tableName="users"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575535770295-11">
+        <dropUniqueConstraint constraintName="UK_ehsu2tyinopypjox1ijxt3g3c" tableName="pictures"/>
+    </changeSet>
+    <changeSet author="farida (generated)" id="1575535770295-12">
+        <addUniqueConstraint columnNames="picture_data_id" constraintName="UK_ehsu2tyinopypjox1ijxt3g3c" tableName="pictures"/>
+    </changeSet>
+</databaseChangeLog>

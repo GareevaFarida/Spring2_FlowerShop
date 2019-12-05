@@ -32,11 +32,11 @@ public class IndexController {
         return "about";
     }
 
-    @GetMapping(value = "/cart")
-    public String cartPage(Model model) {
-        categoryService.insertListCategoriesInModel(model);
-        return "cart";
-    }
+//    @GetMapping(value = "/cart")
+//    public String cartPage(Model model) {
+//        categoryService.insertListCategoriesInModel(model);
+//        return "cart";
+//    }
 
     @GetMapping(value = "specials")
     public String specialsPage(Model model) {
@@ -59,7 +59,7 @@ public class IndexController {
     @GetMapping(value = "product")
     public String detailsPage(Model model) {
         categoryService.insertListCategoriesInModel(model);
-        return "details";
+        return "product_details";
     }
 
     @GetMapping(value = "contact")
@@ -71,6 +71,6 @@ public class IndexController {
     @GetMapping(value = "details")
     public String productPage(Model model) {
         categoryService.insertListCategoriesInModel(model);
-        return "details";
+        return "product_details";
     }
 }

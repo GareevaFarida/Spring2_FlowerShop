@@ -1,10 +1,7 @@
 package ru.geekbrains.controllers.repr;
 
 import org.springframework.web.multipart.MultipartFile;
-import ru.geekbrains.persist.model.Brand;
-import ru.geekbrains.persist.model.Category;
-import ru.geekbrains.persist.model.Flower;
-import ru.geekbrains.persist.model.Product;
+import ru.geekbrains.persist.model.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -31,6 +28,8 @@ public class ProductRepr implements Serializable {
 
     private List<Flower> flowers;
 
+    private List<Color> colors;
+
     public ProductRepr() {
     }
 
@@ -44,6 +43,7 @@ public class ProductRepr implements Serializable {
                 .map(PictureRepr::new)
                 .collect(Collectors.toList());
         this.flowers = product.getFlowers();
+        this.colors = product.getColors();
     }
 
     public Long getId() {
@@ -108,6 +108,14 @@ public class ProductRepr implements Serializable {
 
     public void setFlowers(List<Flower> flowers) {
         this.flowers = flowers;
+    }
+
+    public List<Color> getColors() {
+        return colors;
+    }
+
+    public void setColors(List<Color> colors) {
+        this.colors = colors;
     }
 
     @Override

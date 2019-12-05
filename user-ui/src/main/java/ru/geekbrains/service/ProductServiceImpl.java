@@ -1,12 +1,14 @@
 package ru.geekbrains.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import ru.geekbrains.controller.repr.ProductRepr;
 import ru.geekbrains.persist.model.Product;
 import ru.geekbrains.persist.repo.ProductRepository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -19,12 +21,36 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getAllProducts() {
-        return productRepository.findAll(Sort.by("name"));
+    public List<ProductRepr> getAllProducts() {
+
+        List<ProductRepr> reprList = new ArrayList<>();
+
+        for (Product prod:productRepository.findAll()) {
+            reprList.add(new ProductRepr(prod));
+        }
+        return reprList;
     }
 
     @Override
-    public List<Product> getProductsByCategoryId(Long id) {
-        return productRepository.findByCategoryId(id);
+    public List<ProductRepr> getProductsByCategoryId(Long id) {
+        if (id == -1) {
+            return getAllProducts();
+        }
+        List<ProductRepr> reprList = new ArrayList<>();
+        for (Product prod:productRepository.findByCategoryId(id)) {
+            reprList.add(new ProductRepr(prod));
+        }
+        return reprList;
+    }
+
+    @Override
+    public ProductRepr getProductById(Long id) {
+        //return productRepository.findById(id).orElseThrow(() -> new IllegalStateException("Product with id = " + id + " not found."));
+        return productRepository.findById(id).map(ProductRepr::new).get();
+    }
+
+    @Override
+    public Optional<ProductRepr> findById(Long id) {
+        return productRepository.findById(id).map(ProductRepr::new);
     }
 }

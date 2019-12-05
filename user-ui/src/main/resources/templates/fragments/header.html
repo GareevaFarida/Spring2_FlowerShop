@@ -3,7 +3,8 @@
 <head>
     <th:block th:fragment="head">
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
-        <link rel="stylesheet" type="text/css" href="../static/style.css" th:href="@{/style.css}"/>
+        <link rel="stylesheet" type="text/css" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+<!--        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">-->
     </th:block>
 </head>
 
@@ -15,7 +16,7 @@
         <ul>
             <li class="selected"><a th:href="@{/index}">home</a></li>
             <li><a th:href="@{/about}">about us</a></li>
-            <li><a th:href="@{/categories}">flowers</a></li>
+            <li><a th:href="@{/categories/select?id={id}(id=${-1})}">flowers</a></li>
             <li><a th:href="@{/specials}">specials gifts</a></li>
             <li><a th:href="@{/myaccount}">my accout</a></li>
             <li><a th:href="@{/register}">register</a></li>
