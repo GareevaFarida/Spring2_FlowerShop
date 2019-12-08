@@ -8,7 +8,7 @@
 </head>
 <body>
 <div id="wrap">
-    <div th:replace="fragments/header :: header-area"></div>
+    <div th:replace="fragments/header :: header-area(selectedItem = 'categories')"></div>
     <div class="center_content">
         <div class="left_content">
             <div class="crumb_nav"><a th:href="@{/index}">home</a> &gt;&gt; <span th:text="${categoryName}">category name</span>
@@ -20,28 +20,27 @@
 
 
                 <div class="new_prod_box" th:each="product:${products}">
-                    <form th:action="@{/cart}" method="post">
-                        <a th:href="@{/product_details/{id}(id=${product.id})}"
-                           th:text="${product.name}">
-                            <img th:src="@{/picture/{id}(id=${product.pictureIds[0]})}" alt="">product name
+                    <!--                    <form th:action="@{/cart}" method="post">-->
+                    <a th:href="@{/product_details/{id}(id=${product.id})}"
+                       th:text="${product.name}">
+                        <img th:src="@{/picture/{id}(id=${product.pictureIds[0]})}" alt="">product name
+                    </a>
+                    <div class="new_prod_bg"><span class="new_icon"><img src="../static/images/promo_icon.gif"
+                                                                         alt=""/></span>
+                        <a th:href="@{/product_details/{id}(id=${product.id})}">
+                            <!--                           th:style="'background: url('+@{/picture/{id}(id=${product.pictureIds[0]})}+') no-repeat center center fixed;'">-->
+                            <img th:src="@{/picture/{id}(id=${product.pictureIds[0]})}" alt="" class="thumb"
+                                 border="0"/>
                         </a>
-                        <div class="new_prod_bg"><span class="new_icon"><img src="../static/images/promo_icon.gif"
-                                                                             alt=""/></span>
-                            <a th:href="@{/product_details/{id}(id=${product.id})}">
-                                <!--                           th:style="'background: url('+@{/picture/{id}(id=${product.pictureIds[0]})}+') no-repeat center center fixed;'">-->
-                                <img th:src="@{/picture/{id}(id=${product.pictureIds[0]})}" alt="" class="thumb"
-                                     border="0"/>
-                            </a>
-                        </div>
-                        <div>
-                            <span>$<span th:text="${product.price}">Price</span></span>
-                        </div>
+                    </div>
+                    <div>
+                        <span>$<span th:text="${product.price}">Price</span></span>
+                    </div>
 
-
-                            <input type="hidden" name="qty" value="1"/>
-                            <input type="hidden" name="productId" th:value="${product.id}">
-                            <button class="shopBtn" type="submit" title="add to cart"> Add to cart </button>
-
+                    <form th:action="@{/cart}" method="post">
+                        <input type="hidden" name="qty" value="1"/>
+                        <input type="hidden" name="productId" th:value="${product.id}">
+                        <button class="shopBtn" type="submit" title="add to cart"> Add to cart</button>
                     </form>
 
                     <!--                    <div class = "prod_price">-->

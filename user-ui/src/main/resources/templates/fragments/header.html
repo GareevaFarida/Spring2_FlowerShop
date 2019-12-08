@@ -4,24 +4,42 @@
     <th:block th:fragment="head">
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
         <link rel="stylesheet" type="text/css" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
-<!--        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">-->
+        <!--        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">-->
     </th:block>
 </head>
 
-<div th:fragment="header-area" class="header">
+<div th:fragment="header-area(selectedItem)" class="header">
     <div class="logo"><a th:href="@{/index}">
         <img src="../static/images/logo.gif" th:src="@{/images/logo.gif}" alt="" border="0"/>
     </a></div>
     <div id="menu">
         <ul>
-            <li class="selected"><a th:href="@{/index}">home</a></li>
-            <li><a th:href="@{/about}">about us</a></li>
-            <li><a th:href="@{/categories/select?id={id}(id=${-1})}">flowers</a></li>
-            <li><a th:href="@{/specials}">specials gifts</a></li>
-            <li><a th:href="@{/myaccount}">my accout</a></li>
-            <li><a th:href="@{/register}">register</a></li>
-            <li><a th:href="@{/details}">prices</a></li>
-            <li><a th:href="@{/contact}">contact</a></li>
+<!--            <div th:switch="${selectedItem}">-->
+<!--                <p th:case="'home'">-->
+<!--                <li class="selected"><a th:href="@{/index}">home</a></li>-->
+<!--                </p>-->
+<!--                <p th:case="*">-->
+<!--                <li><a th:href="@{/index}">home</a>-->
+<!--                </p>-->
+<!--            </div>-->
+
+            <li th:class="${selectedItem}=='home' ? 'selected' : ''"><a th:href="@{/index}">home</a></li>
+            <li th:class="${selectedItem}=='about' ? 'selected' : ''"><a th:href="@{/about}">about us</a></li>
+            <li th:class="${selectedItem}=='categories' ? 'selected' : ''"><a th:href="@{/categories/select?id={id}(id=${-1})}">flowers</a></li>
+            <li th:class="${selectedItem}=='specials' ? 'selected' : ''"><a th:href="@{/specials}">specials gifts</a></li>
+            <li th:class="${selectedItem}=='myaccount' ? 'selected' : ''"><a th:href="@{/myaccount}">my accout</a></li>
+            <li th:class="${selectedItem}=='register' ? 'selected' : ''"><a th:href="@{/register}">register</a></li>
+
+<!--            <li th:class="${selectedItem}=='details' ? 'selected' : ''"><a th:href="@{/details}">prices</a></li>-->
+            <li th:class="${selectedItem}=='contact' ? 'selected' : ''"><a th:href="@{/contact}">contact</a></li>
+            <!--            <li class="selected"><a th:href="@{/index}">home</a></li>-->
+            <!--            <li><a th:href="@{/about}">about us</a></li>-->
+            <!--            <li><a th:href="@{/categories/select?id={id}(id=${-1})}">flowers</a></li>-->
+            <!--            <li><a th:href="@{/specials}">specials gifts</a></li>-->
+            <!--            <li><a th:href="@{/myaccount}">my accout</a></li>-->
+            <!--            <li><a th:href="@{/register}">register</a></li>-->
+            <!--            <li><a th:href="@{/details}">prices</a></li>-->
+            <!--            <li><a th:href="@{/contact}">contact</a></li>-->
         </ul>
     </div>
 </div>

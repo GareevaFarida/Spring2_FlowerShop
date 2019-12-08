@@ -50,4 +50,10 @@
         <tagDatabase tag="v.5.0"/>
     </changeSet>
 
+    <include file="v-5.0/db.changelog-v.5.1.xml" relativeToChangelogFile="true"/>
+
+    <changeSet author="farida" id="7">
+        <tagDatabase tag="v.5.1"/>
+    </changeSet>
+
 </databaseChangeLog>

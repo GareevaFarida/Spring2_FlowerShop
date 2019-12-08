@@ -6,12 +6,13 @@ import ru.geekbrains.persist.model.Picture;
 import ru.geekbrains.persist.model.Product;
 import sun.util.resources.cldr.te.CalendarData_te_IN;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ProductRepr {
+public class ProductRepr implements Serializable {
 
     private Long id;
 
@@ -28,6 +29,9 @@ public class ProductRepr {
     private List<Long> pictureIds;
 
     private List<String> flowerNames;
+
+    public ProductRepr() {
+    }
 
     public ProductRepr(Product product) {
         this.id = product.getId();

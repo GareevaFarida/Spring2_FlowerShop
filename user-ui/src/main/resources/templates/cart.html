@@ -3,12 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
+    <script src="https://kit.fontawesome.com/d3f3225c62.js" crossorigin="anonymous">
+    </script>
     <title>Flower Shop - Cart</title>
     <div th:replace="fragments/header :: head"></div>
 </head>
 <body>
 <div id="wrap">
-    <div th:replace="fragments/header :: header-area"></div>
+    <div th:replace="fragments/header :: header-area(selectedItem = 'cart')"></div>
 
     <div class="center_content">
         <div class="left_content">
@@ -23,25 +25,60 @@
                         <td>Qty</td>
                         <td>Total</td>
                     </tr>
-                    <tr  th:each="lineItem : ${lineItems}">
-                        <td><a th:href="@{/products/select?{id} = id(${lineItem.productRepr.id})}"><img th:src="@{/picture/{id}(id=${lineItem.productRepr.pictureIds[0]})}" alt="" border="0"
-                                             class="cart_thumb"/></a></td>
+                    <tr th:each="lineItem : ${lineItems}">
+                        <td><a th:href="@{/product_details/{id} (id=${lineItem.productRepr.id})}"><img
+                                th:src="@{/picture/{id}(id=${lineItem.productRepr.pictureIds[0]})}" alt="" border="0"
+                                class="cart_thumb"/></a></td>
                         <td th:text="${lineItem.productRepr.name}">Gift flowers</td>
                         <td>$<span th:text="${lineItem.productRepr.price}">100$</span></td>
-                        <td th:text="${lineItem.qty}">1</td>
+                        <!--                        <td th:text="${lineItem.qty}">1-->
+                        <!--                            <div class="input-append">-->
+                        <!--                                <button class="btn btn-xs" type="button">-</button>-->
+                        <!--                                <button class="btn btn-xs" type="button"> +</button>-->
+                        <!--                                <button class="btn btn-xs btn-danger" type="button"><span class="icon-remove"></span>-->
+                        <!--                                </button>-->
+                        <!--                            </div>-->
+                        <!--                        </td>-->
+                        <td>
+                            <input class="col-md-2" style="max-width:34px" placeholder="1" id="appendedInputButtons"
+                                   size="16" type="text" th:value="${lineItem.qty}">
+                            <div class="input-append">
+                                <form method="post" th:action="@{/cart/dec}">
+                                    <button class="btn btn-xs" type="submit">-</button>
+                                    <input type="hidden" th:value="${lineItem.productId}" name="productId">
+                                    <input type="hidden" th:value="${lineItem.qty}" name="qty">
+                                </form>
+
+                                <form method="post" th:action="@{/cart/inc}">
+                                    <button class="btn btn-xs" type="submit"> +</button>
+                                    <input type="hidden" name="productId" th:value="${lineItem.productId}">
+                                    <input type="hidden" name="qty" th:value="${lineItem.qty}">
+                                </form>
+                                <form method="post" th:action="@{/cart/remove}">
+                                    <button class="btn btn-xs btn-danger" type="submit">
+                                        <i class="fas fa-trash-alt"></i><span class="icon-remove"></span>
+                                    </button>
+                                    <input type="hidden" name="productId" th:value="${lineItem.productId}">
+                                    <input type="hidden" name="qty" th:value="${lineItem.qty}">
+                                </form>
+                            </div>
+                        </td>
+
+
                         <td>$<span th:text="${lineItem.total}">100$</span></td>
                     </tr>
 
                     <tr>
                         <td colspan="4" class="cart_total"><span class="red">TOTAL SHIPPING:</span></td>
-                        <td> 250$</td>
+                        <td>$<span th:text="${subTotal}"> 250$</span></td>
                     </tr>
                     <tr>
                         <td colspan="4" class="cart_total"><span class="red">TOTAL:</span></td>
-                        <td> 325$</td>
+                        <td> $<span th:text="${subTotal}"> 250$</span></td>
                     </tr>
                 </table>
-                <a href="#" class="continue">&lt; continue</a> <a href="#" class="checkout">checkout &gt;</a></div>
+                <a href="#" class="continue" onclick="javascript:history.back(); return false;">&lt; continue</a>
+                <a th:href="@{/cart/checkout}" class="checkout">checkout &gt;</a></div>
             <div class="clear"></div>
         </div>
         <!--end of left content-->

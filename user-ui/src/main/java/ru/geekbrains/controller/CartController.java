@@ -38,4 +38,38 @@ public class CartController {
         cartService.updateCart(lineItem);
         return "redirect:/cart";
     }
+
+    @RequestMapping(value = "/cart/dec", method = RequestMethod.POST)
+    public String decrementQty(Model model, LineItem lineItem) {
+        categoryService.insertListCategoriesInModel(model);
+        lineItem.setProductRepr(productService.findById(lineItem.getProductId())
+                .orElseThrow(IllegalArgumentException::new));
+        cartService.removeProductQty(lineItem.getProductRepr(), 1);
+        return "redirect:/cart";
+    }
+
+    @RequestMapping(value = "/cart/inc", method = RequestMethod.POST)
+    public String incrementQty(Model model, LineItem lineItem) {
+        categoryService.insertListCategoriesInModel(model);
+        lineItem.setProductRepr(productService.findById(lineItem.getProductId())
+                .orElseThrow(IllegalArgumentException::new));
+        cartService.addProductQty(lineItem.getProductRepr(), 1);
+        return "redirect:/cart";
+    }
+
+    @RequestMapping(value = "/cart/remove", method = RequestMethod.POST)
+    public String removeProduct(Model model, LineItem lineItem) {
+        categoryService.insertListCategoriesInModel(model);
+        lineItem.setProductRepr(productService.findById(lineItem.getProductId())
+                .orElseThrow(IllegalArgumentException::new));
+        cartService.removeProduct(lineItem.getProductRepr());
+        return "redirect:/cart";
+    }
+
+    @RequestMapping(value = "/cart/checkout", method = RequestMethod.GET)
+    public String checkout(Model model) {
+        categoryService.insertListCategoriesInModel(model);
+        cartService.checkout();
+        return "redirect:/cart";
+    }
 }

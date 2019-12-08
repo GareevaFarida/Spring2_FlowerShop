@@ -82,6 +82,12 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public void updateCart(LineItem lineItem) {
-        lineItems.put(lineItem, lineItem.getQty());
+        lineItems.put(lineItem, lineItems.getOrDefault(lineItem, 0) + lineItem.getQty());
     }
+
+    @Override
+    public void checkout() {
+        getSubTotal();
+    }
+
 }
