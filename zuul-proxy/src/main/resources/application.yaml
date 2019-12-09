@@ -1,0 +1,25 @@
+zuul:
+  ignoredServices: "*"
+  routes:
+    user-ui:
+      path: /**
+      sensitiveHeaders:
+      serviceId: shop-ui-service
+    admin-ui:
+      path: /admin/**
+      sensitiveHeaders:
+      url: http://localhost:8081
+
+shop-ui-service:
+  ribbon:
+    listOfServers: http://localhost:8082, http://localhost:8087
+
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
+#    fetchRegistry: true
+
+

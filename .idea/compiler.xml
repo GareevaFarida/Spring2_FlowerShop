@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="admin-ui" />
+        <module name="zuul-proxy" />
         <module name="user-ui" />
         <module name="data" />
       </profile>
@@ -18,6 +19,7 @@
       <module name="data" options="-parameters" />
       <module name="myshop" options="-parameters" />
       <module name="user-ui" options="-parameters" />
+      <module name="zuul-proxy" options="-parameters" />
     </option>
   </component>
 </project>
