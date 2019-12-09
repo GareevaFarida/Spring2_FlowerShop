@@ -7,9 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="admin-ui" />
+        <module name="data" />
         <module name="zuul-proxy" />
         <module name="user-ui" />
-        <module name="data" />
+        <module name="eureka" />
       </profile>
     </annotationProcessing>
   </component>
@@ -17,6 +18,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="admin-ui" options="-parameters" />
       <module name="data" options="-parameters" />
+      <module name="eureka" options="-parameters" />
       <module name="myshop" options="-parameters" />
       <module name="user-ui" options="-parameters" />
       <module name="zuul-proxy" options="-parameters" />
