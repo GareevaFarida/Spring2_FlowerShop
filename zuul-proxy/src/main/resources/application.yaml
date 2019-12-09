@@ -1,0 +1,43 @@
+#zuul:
+#  ignoredServices: "*"
+#  routes:
+#    user-ui:
+#      path: /**
+#      sensitiveHeaders:
+#      serviceId: shop-ui-service
+#    admin-ui:
+#      path: /admin/**
+#      sensitiveHeaders:
+#      url: http://localhost:8081
+#
+#shop-ui-service:
+#  ribbon:
+#    listOfServers: http://localhost:8082, http://localhost:8087
+#
+
+spring:
+  application:
+    name: zuul-proxy
+
+zuul:
+  ignoredServices: "*"
+  routes:
+    user-ui:
+      path: /**
+      sensitiveHeaders:
+      serviceId: SHOP-UI-SERVICE
+    admin-ui:
+      path: /admin/**
+      sensitiveHeaders:
+      serviceId: ADMIN-UI-SERVICE
+
+eureka:
+  client:
+    register-with-eureka: true
+
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    fetchRegistry: true
+
+
+

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="footer" class="footer">
+    <div class="left_footer"><img src="../static/images/footer_logo.gif" th:src="@{/images/footer_logo.gif}" alt=""/><br/>
+        <a href="http://csscreme.com"><img src="../static/images/csscreme.gif" th:src="@{/images/csscreme.gif}" alt="" border="0"/></a></div>
+    <div class="right_footer">
+        <a th:href="@{/index}">home</a>
+        <a th:href="@{/about}">about us</a>
+        <a href="#">services</a>
+        <a href="#">privacy policy</a>
+        <a th:href="@{/contact}">contact us</a>
+    </div>
+</div>
+</html>

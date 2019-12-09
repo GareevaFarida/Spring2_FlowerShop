@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Flower Shop - Details</title>
+    <div th:replace="fragments/header :: head"></div>
+    <link rel="stylesheet" href="../static/lightbox.css" th:href="@{/lightbox.css}" type="text/css" media="screen"/>
+    <script src="../static/js/prototype.js" th:src="@{/js/prototype.js}" type="text/javascript"></script>
+    <script src="../static/js/scriptaculous.js?load=effects" th:src="@{/js/scriptaculous.js?load=effects}"
+            type="text/javascript"></script>
+    <script src="../static/js/lightbox.js" th:src="@{/js/lightbox.js}" type="text/javascript"></script>
+    <script type="text/javascript" src="../static/js/java.js" th:src="@{/js/java.js}"></script>
+</head>
+<body>
+<div id="wrap">
+    <div th:replace="fragments/header :: header-area(selectedItem = 'details')"></div>
+
+    <div class="center_content">
+        <div class="left_content" th:object="${product}">
+            <div class="crumb_nav"><a th:href="@{/index}">home</a>
+                &gt;&gt;
+                <a th:href="@{/categories/select?id={id}(id=${product.categoryId})}" th:text="*{categoryName}"> category
+                    name</a>
+                &gt;&gt;
+                <span th:text="*{name}">Product name</span>
+            </div>
+            <div class="title" th:text="*{name}">
+                <!--                <span class="title_icon"><img src="/images/thumb3.gif" alt=""/></span>-->
+                Product name
+            </div>
+            <div class="feat_prod_box_details">
+                <div class="prod_img">
+                    <!--                    <a href="#"><img src="/images/thumb3.gif" alt="" border="0"/></a>-->
+                    <!--                    <br/>-->
+                    <!--                    <br/>-->
+                    <a href="/images/basket-red-roses.webp" rel="lightbox"><img
+                            th:src="@{/picture/{id}(id=${product.pictureIds[0]})}" alt="" border="0"/></a>
+
+                </div>
+                <div class="prod_det_box">
+                    <div class="box_top"></div>
+                    <div class="box_center">
+                        <div class="prod_title">Details</div>
+                        <p class="details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation.<br/>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. </p>
+                        <div class="price"><strong>PRICE:</strong> <span class="red">$</span><span class="red"
+                                                                                                   th:text="*{price}">100 $</span>
+                        </div>
+                        <div class="price"><strong>COLORS:</strong> <span class="colors"><img
+                                src="/images/color1.gif"
+                                alt="" border="0"/></span>
+                            <span class="colors"><img src="/images/color2.gif" alt="" border="0"/></span> <span
+                                    class="colors"><img src="/images/color3.gif" alt="" border="0"/></span>
+                        </div>
+                        <!--                        <a th:href="@{/cart/{id}(id=${product.id})}" class="more"><img src="/images/order_now.gif"-->
+                        <!--                                                                                       alt="" border="0"/></a>-->
+
+                        <form th:action="@{/cart}" method="post">
+                            <input type="hidden" name="qty" value="1"/>
+                            <input type="hidden" name="productId" th:value="${product.id}">
+                            <div style="align-content: center">
+                                <button class="shopBtn" type="submit" title="add to cart"> Add to cart</button>
+                            </div>
+                        </form>
+
+                        <div class="clear"></div>
+                    </div>
+                    <div class="box_bottom"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div id="demo" class="demolayout">
+                <ul id="demo-nav" class="demolayout">
+                    <li><a class="active" href="#tab1">More details</a></li>
+                    <li><a class="" href="#tab2">Related Products</a></li>
+                </ul>
+                <div class="tabs-container">
+                    <div style="display: block;" class="tab" id="tab1">
+                        <p class="more_details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation. </p>
+                        <ul class="list">
+                            <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a></li>
+                            <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a></li>
+                            <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a></li>
+                            <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a></li>
+                        </ul>
+                        <p class="more_details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                            exercitation. </p>
+                    </div>
+                    <div style="display: none;" class="tab" id="tab2">
+                        <div class="new_prod_box"><a href="#">product name</a>
+                            <div class="new_prod_bg"><a href="#"><img src="../static/images/thumb1.gif" alt=""
+                                                                      class="thumb"
+                                                                      border="0"/></a></div>
+                        </div>
+                        <div class="new_prod_box"><a href="#">product name</a>
+                            <div class="new_prod_bg"><a href="#"><img src="../static/images/thumb2.gif" alt=""
+                                                                      class="thumb"
+                                                                      border="0"/></a></div>
+                        </div>
+                        <div class="new_prod_box"><a href="#">product name</a>
+                            <div class="new_prod_bg"><a href="#"><img src="../static/images/thumb3.gif" alt=""
+                                                                      class="thumb"
+                                                                      border="0"/></a></div>
+                        </div>
+                        <div class="new_prod_box"><a href="#">product name</a>
+                            <div class="new_prod_bg"><a href="#"><img src="../static/images/thumb1.gif" alt=""
+                                                                      class="thumb"
+                                                                      border="0"/></a></div>
+                        </div>
+                        <div class="new_prod_box"><a href="#">product name</a>
+                            <div class="new_prod_bg"><a href="#"><img src="../static/images/thumb2.gif" alt=""
+                                                                      class="thumb"
+                                                                      border="0"/></a></div>
+                        </div>
+                        <div class="new_prod_box"><a href="#">product name</a>
+                            <div class="new_prod_bg"><a href="#"><img src="../static/images/thumb3.gif" alt=""
+                                                                      class="thumb"
+                                                                      border="0"/></a></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--end of left content-->
+        <div th:replace="fragments/right-content::right-content"></div>
+        <!--end of right content-->
+        <div class="clear"></div>
+    </div>
+    <!--end of center content-->
+    <div th:replace="fragments/footer::footer"></div>
+</div>
+</body>
+<script type="text/javascript">
+
+    var tabber1 = new Yetii({
+        id: 'demo'
+    });
+
+</script>
+</html>

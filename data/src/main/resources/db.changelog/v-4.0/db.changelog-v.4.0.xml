@@ -1,0 +1,31 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="farida" id="10">
+        <createTable tableName="flowers">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="flowersPK"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="farida" id="11">
+        <createTable tableName="products_flowers">
+            <column name="product_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="PKproduct" nullable="false"/>
+            </column>
+            <column name="flower_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="PKflower" nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="12" author="farida">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="products_flowers" constraintName="FKproduct" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="products" validate="true"/>
+    </changeSet>
+    <changeSet id="13" author="farida">
+        <addForeignKeyConstraint baseColumnNames="flower_id" baseTableName="products_flowers" constraintName="FKflower" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="flowers" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
