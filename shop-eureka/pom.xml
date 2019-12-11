@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ru.geekbrains</groupId>
-    <artifactId>zuul-proxy</artifactId>
+    <artifactId>shop-eureka</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>zuul-proxy</name>
-    <description>zuul proxy for flower-shop</description>
+    <name>shop-eureka</name>
+    <description>Demo eureka for flower-shop</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -26,15 +26,12 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
-
-        <!--		зависимость для работы с eureka (начало)-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
-        <!--		зависимость для работы с eureka (конец)-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
