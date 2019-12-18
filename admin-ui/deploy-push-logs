@@ -1,0 +1,104 @@
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 47 resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ admin-ui ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 20 source files to C:\Farida\geekbrains\Study java\Quarter III\Spring2\Restored_from_backup_2019_12_11\myshop\admin-ui\target\classes
+[INFO]
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ admin-ui ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\Farida\geekbrains\Study java\Quarter III\Spring2\Restored_from_backup_2019_12_11\myshop\admin-ui\src\test\resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ admin-ui ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to C:\Farida\geekbrains\Study java\Quarter III\Spring2\Restored_from_backup_2019_12_11\myshop\admin-ui\target\test-classes
+[INFO]
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ admin-ui ---
+[INFO]
+[INFO] --- maven-jar-plugin:3.1.2:jar (default-jar) @ admin-ui ---
+[INFO] Building jar: C:\Farida\geekbrains\Study java\Quarter III\Spring2\Restored_from_backup_2019_12_11\myshop\admin-ui\target\admin-ui-0.0.1-SNAPSHOT.jar
+[INFO]
+[INFO] --- spring-boot-maven-plugin:2.2.1.RELEASE:repackage (repackage) @ admin-ui ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO]
+[INFO] --- dockerfile-maven-plugin:1.4.13:build (default) @ admin-ui ---
+[INFO] Google Container Registry support is disabled
+[INFO] dockerfile: null
+[INFO] contextDirectory: C:\Farida\geekbrains\Study java\Quarter III\Spring2\Restored_from_backup_2019_12_11\myshop\admin-ui
+[INFO] Building Docker context C:\Farida\geekbrains\Study java\Quarter III\Spring2\Restored_from_backup_2019_12_11\myshop\admin-ui
+[INFO] Path(dockerfile): null
+[INFO] Path(contextDirectory): C:\Farida\geekbrains\Study java\Quarter III\Spring2\Restored_from_backup_2019_12_11\myshop\admin-ui
+[INFO]
+[INFO] Image will be built as registry.heroku.com/farida-admin-ui/web:latest
+[INFO]
+[INFO] Step 1/6 : FROM openjdk:8-jdk-alpine
+[INFO]
+[INFO] Pulling from library/openjdk
+[INFO] Digest: sha256:94792824df2df33402f201713f932b58cb9de94a0cd524164a0f2283343547b3
+[INFO] Status: Image is up to date for openjdk:8-jdk-alpine
+[INFO]  ---> a3562aa0b991
+[INFO] Step 2/6 : ARG JAR_FILE
+[INFO]
+[INFO]  ---> Using cache
+[INFO]  ---> 260a2f1453c1
+[INFO] Step 3/6 : COPY ./target/${JAR_FILE} /bin/app.jar
+[INFO]
+[INFO]  ---> ed8b54b10dd2
+[INFO] Step 4/6 : COPY ./entrypoint.sh /bin/entrypoint.sh
+[INFO]
+[INFO]  ---> 516d08329f83
+[INFO] Step 5/6 : RUN chmod +x /bin/entrypoint.sh
+[INFO]
+[INFO]  ---> Running in 51a402f491bb
+[INFO] Removing intermediate container 51a402f491bb
+[INFO]  ---> 7a9aea9afc92
+[INFO] Step 6/6 : CMD ["/bin/entrypoint.sh"]
+[INFO]
+[INFO]  ---> Running in f07a9cb8ad8d
+[INFO] Removing intermediate container f07a9cb8ad8d
+[INFO]  ---> 4d1688500b5e
+[INFO] Successfully built 4d1688500b5e
+[INFO] Successfully tagged registry.heroku.com/farida-admin-ui/web:latest
+[INFO]
+[INFO] Detected build of image with id 4d1688500b5e
+[INFO] Building jar: C:\Farida\geekbrains\Study java\Quarter III\Spring2\Restored_from_backup_2019_12_11\myshop\admin-ui\target\admin-ui-0.0.1-SNAPSHOT-docker-info.jar
+[INFO] Successfully built registry.heroku.com/farida-admin-ui/web:latest
+[INFO]
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ admin-ui ---
+[INFO] Installing C:\Farida\geekbrains\Study java\Quarter III\Spring2\Restored_from_backup_2019_12_11\myshop\admin-ui\target\admin-ui-0.0.1-SNAPSHOT.jar to C:\Users\admin\.m2\repository\spring2\ru\geekbrains\admin-ui\0.0.1-SNAPSHOT\admin-ui-0.0.1-SNAPSHOT.jar
+[INFO] Installing C:\Farida\geekbrains\Study java\Quarter III\Spring2\Restored_from_backup_2019_12_11\myshop\admin-ui\pom.xml to C:\Users\admin\.m2\repository\spring2\ru\geekbrains\admin-ui\0.0.1-SNAPSHOT\admin-ui-0.0.1-SNAPSHOT.pom
+[INFO] Installing C:\Farida\geekbrains\Study java\Quarter III\Spring2\Restored_from_backup_2019_12_11\myshop\admin-ui\target\admin-ui-0.0.1-SNAPSHOT-docker-info.jar to C:\Users\admin\.m2\repository\spring2\ru\geekbrains\admin-ui\0.0.1-SNAPSHOT\admin-ui-0.0.1-SNAPSHOT-docker-info.jar
+[INFO]
+[INFO] --- maven-deploy-plugin:2.8.2:deploy (default-deploy) @ admin-ui ---
+[INFO] Skipping artifact deployment
+[INFO]
+[INFO] --- dockerfile-maven-plugin:1.4.13:push (default) @ admin-ui ---
+[INFO] Google Container Registry support is disabled
+[INFO] The push refers to repository [registry.heroku.com/farida-admin-ui/web]
+[INFO] Image 6f1ed4b48d92: Preparing
+[INFO] Image f7a196825f0c: Preparing
+[INFO] Image f31cfd7ebdc7: Preparing
+[INFO] Image ceaf9e1ebef5: Preparing
+[INFO] Image 9b9b7f3d56a0: Preparing
+[INFO] Image f1b5933fe4b5: Preparing
+[INFO] Image f1b5933fe4b5: Waiting
+[INFO] Image f7a196825f0c: Pushing
+[INFO] Image 6f1ed4b48d92: Pushing
+[INFO] Image f31cfd7ebdc7: Pushing
+[INFO] Image 9b9b7f3d56a0: Pushing
+[INFO] Image ceaf9e1ebef5: Pushing
+[INFO] Image f7a196825f0c: Pushed
+[INFO] Image 6f1ed4b48d92: Pushed
+[INFO] Image 9b9b7f3d56a0: Pushed
+[INFO] Image f1b5933fe4b5: Pushing
+[INFO] Image f1b5933fe4b5: Pushed
+[INFO] Image f31cfd7ebdc7: Pushed
+[INFO] Image ceaf9e1ebef5: Pushed
+[INFO] latest: digest: sha256:cb5695ac5a3eaf5f44b69029e52d73714cbd304691cf4973a26570b6e54b0cd4 size: 1574
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  23:10 min
+[INFO] Finished at: 2019-12-18T13:59:31+03:00
+[INFO] ------------------------------------------------------------------------

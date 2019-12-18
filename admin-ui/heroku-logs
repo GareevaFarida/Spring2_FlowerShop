@@ -1,0 +1,10 @@
+2019-12-18T10:32:07.841004+00:00 app[api]: Release v2 created by user gareeva.farida@gmail.com
+2019-12-18T10:32:07.738956+00:00 app[api]: Release v1 created by user gareeva.farida@gmail.com
+2019-12-18T10:32:07.738956+00:00 app[api]: Initial release by user gareeva.farida@gmail.com
+2019-12-18T10:32:07.841004+00:00 app[api]: Enable Logplex by user gareeva.farida@gmail.com
+2019-12-18T10:32:24.318163+00:00 app[api]: Running release v3 commands by user gareeva.farida@gmail.com
+2019-12-18T10:32:24.332266+00:00 app[api]: @ref:postgresql-graceful-40546 completed provisioning, setting DATABASE_URL. by user gareeva.farida@gmail.com
+2019-12-18T10:32:24.332266+00:00 app[api]: Release v4 created by user gareeva.farida@gmail.com
+2019-12-18T10:32:24.318163+00:00 app[api]: Attach DATABASE (@ref:postgresql-graceful-40546) by user gareeva.farida@gmail.com
+2019-12-18T10:32:57.693591+00:00 app[api]: Release v5 created by user gareeva.farida@gmail.com
+2019-12-18T10:32:57.693591+00:00 app[api]: Set JDBC_DRIVER_CLASS, HIBERNATE_DIALECT config vars by user gareeva.farida@gmail.com
