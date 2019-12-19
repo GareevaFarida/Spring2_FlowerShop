@@ -119,7 +119,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <username>gareevafarida</username>
+                    <username>gareevafarida</username><!--логин на docker.com-->
                     <password>Purumok11</password>
                     <googleContainerRegistryEnabled>false</googleContainerRegistryEnabled>
                     <repository>registry.heroku.com/farida-${project.artifactId}/web</repository>
