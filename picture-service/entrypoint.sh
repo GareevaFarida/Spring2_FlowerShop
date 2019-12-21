@@ -39,7 +39,7 @@ if [ -z "$JDBC_DATABASE_URL" ]; then
 
     echo "[INFO] path= "$path
 
-   # export JDBC_DATABASE_URL="jdbc:postgresql://${host}:${port}/${db_name}"
+#    export JDBC_DATABASE_URL="jdbc:postgresql://${host}:${port}/${db_name}"
 #    export JDBC_DATABASE_USERNAME=$user
 #    export JDBC_DATABASE_PASSWORD=$pass
     export JDBC_DATABASE_URL="jdbc:postgresql://ec2-54-83-13-145.compute-1.amazonaws.com:5432/d27o33sup0mrf5"
