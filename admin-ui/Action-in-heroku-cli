@@ -1,0 +1,24 @@
+C:\Farida\geekbrains\Study java\Quarter III\Spring2\Restored_from_backup_2019_12_11\myshop>heroku apps:create farida-admin-ui
+Creating ⬢ farida-admin-ui... done
+https://farida-admin-ui.herokuapp.com/ | https://git.heroku.com/farida-admin-ui.git
+
+C:\Farida\geekbrains\Study java\Quarter III\Spring2\Restored_from_backup_2019_12_11\myshop>heroku addons:create heroku-postgresql:hobby-dev --app farida-admin-ui
+Creating heroku-postgresql:hobby-dev on ⬢ farida-admin-ui... free
+Database has been created and is available
+ ! This database is empty. If upgrading, you can transfer
+ ! data from another database with pg:copy
+Created postgresql-graceful-40546 as DATABASE_URL
+Use heroku addons:docs heroku-postgresql to view documentation
+
+C:\Farida\geekbrains\Study java\Quarter III\Spring2\Restored_from_backup_2019_12_11\myshop>heroku config:set JDBC_DRIVER_CLASS=org.postgresql.Driver HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQLDialect --a
+pp farida-admin-ui
+Setting JDBC_DRIVER_CLASS, HIBERNATE_DIALECT and restarting ⬢ farida-admin-ui... done, v5
+HIBERNATE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
+JDBC_DRIVER_CLASS: org.postgresql.Driver
+
+C:\Farida\geekbrains\Study java\Quarter III\Spring2\Restored_from_backup_2019_12_11\myshop>heroku auth:token
+ »   Warning: token will expire 12/17/2020
+ »   Use heroku authorizations:create to generate a long-term token
+77ff8a10-0478-40e0-bbde-e77e7445f70a
+
+C:\Farida\geekbrains\Study java\Quarter III\Spring2\Restored_from_backup_2019_12_11\myshop>
