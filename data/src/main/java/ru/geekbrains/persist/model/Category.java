@@ -1,5 +1,7 @@
 package ru.geekbrains.persist.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -17,6 +19,8 @@ public class Category implements Serializable {
     @Column(name = "name", unique = true, nullable = false)
     private String name;
 
+
+    @JsonBackReference
     @OneToMany(
             mappedBy = "category",
             cascade = CascadeType.ALL)

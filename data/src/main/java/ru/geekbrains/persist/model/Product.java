@@ -1,5 +1,7 @@
 package ru.geekbrains.persist.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -20,9 +22,11 @@ public class Product implements Serializable {
     @Column(name = "price")
     private BigDecimal price;
 
+    @JsonManagedReference
     @ManyToOne(optional = false)
     private Category category;
 
+    @JsonManagedReference
     @ManyToOne(optional = false)
     private Brand brand;
 
