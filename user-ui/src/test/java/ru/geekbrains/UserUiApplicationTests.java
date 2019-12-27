@@ -1,13 +1,15 @@
-//package ru.geekbrains.spring2;
-//
-//import org.junit.jupiter.api.Test;
-//import org.springframework.boot.test.context.SpringBootTest;
-//
-//@SpringBootTest
-//class UserUiApplicationTests {
-//
-//    @Test
-//    void contextLoads() {
-//    }
-//
-//}
+package ru.geekbrains;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
+
+@SpringBootTest
+@TestPropertySource(locations = "classpath:application-test.properties")
+class UserUiApplicationTests {
+
+    @Test
+    void contextLoads() {
+    }
+
+}

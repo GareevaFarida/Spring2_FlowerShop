@@ -16,8 +16,16 @@ public class PictureData implements Serializable {
     private Long id;
 
     @Lob
-    @Type(type="org.hibernate.type.BinaryType") // для правильной работы PostgreSQL
-    @Column(name = "data", nullable = false, length = 33554430) // для правильной hibernate-валидации в MySQL
+
+    //эти настройки нужны для выгрузки docker в heroku (начало)
+//    @Type(type="org.hibernate.type.BinaryType") // для правильной работы PostgreSQL
+//    @Column(name = "data", nullable = false, length = 33554430) // для правильной hibernate-валидации в MySQL
+    //эти настройки нужны для выгрузки docker в heroku (конец)
+
+    //при таких настройках работает тестирование с базой h2 (начало)
+    @Column(name = "data", nullable = false)
+    //при таких настройках работает тестирование с базой h2 (конец)
+
     private byte[] data;
 
     public PictureData() {

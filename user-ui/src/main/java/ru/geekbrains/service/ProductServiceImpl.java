@@ -37,7 +37,8 @@ public class ProductServiceImpl implements ProductService {
             return getAllProducts();
         }
         List<ProductRepr> reprList = new ArrayList<>();
-        for (Product prod:productRepository.findByCategoryId(id)) {
+        List<Product> products = productRepository.findByCategoryId(id);
+        for (Product prod:products) {
             reprList.add(new ProductRepr(prod));
         }
         return reprList;

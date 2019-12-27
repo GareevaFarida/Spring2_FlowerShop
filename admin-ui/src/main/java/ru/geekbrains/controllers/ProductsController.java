@@ -4,11 +4,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.geekbrains.controllers.repr.ProductRepr;
 import ru.geekbrains.persist.repo.BrandRepository;
@@ -76,6 +78,13 @@ public class ProductsController {
     }
 
     @PostMapping("/product")
+//пыталась изменить аннотацию для возможности тестирования с передачей строки json,
+// но в таком виде контроллер не работает, ошибка 415
+//    @PostMapping(path = "/product"
+//            , consumes = {"application/json","text/html"}
+//            , produces = {"application/json","text/html"})
+
+
     public String adminUpsertProduct(Model model, RedirectAttributes redirectAttributes, ProductRepr product) {
         model.addAttribute("activePage", "Products");
 
